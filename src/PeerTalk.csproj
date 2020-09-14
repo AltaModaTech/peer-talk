@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">net461;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.1</TargetFrameworks>
     <AssemblyName>PeerTalk</AssemblyName>
     <RootNamespace>PeerTalk</RootNamespace>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
@@ -23,9 +24,9 @@
     <Copyright>© 2018-2019 Richard Schneider</Copyright>
     <PackageTags>ipfs peer-to-peer libp2p p2p distributed web</PackageTags>
     <IncludeSymbols>True</IncludeSymbols>
-    <PackageLicenseUrl>https://github.com/richardschneider/peer-talk/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://github.com/richardschneider/peer-talk/blob/master/LICENSE</PackageLicense>
     <PackageProjectUrl>https://github.com/richardschneider/peer-talk</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/ipfs/logo/blob/master/platform-icons/osx-menu-bar.png</PackageIconUrl>
+    <PackageIcon>https://github.com/ipfs/logo/blob/master/platform-icons/osx-menu-bar.png</PackageIcon>
     <GeneratePackageOnBuild Condition=" '$(Configuration)' == 'Release' ">true</GeneratePackageOnBuild>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
@@ -33,8 +34,8 @@
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard14'">
     <DefineConstants>NETSTANDARD14</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2'">
-    <DefineConstants>NETSTANDARD2</DefineConstants>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1'">
+    <DefineConstants>NETSTANDARD21</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
     <DefineConstants>NET461</DefineConstants>
@@ -52,7 +53,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ipfs.Core" Version="0.55.0" />
+    <PackageReference Include="Ipfs.Core" Version="0.42.0" />
     <PackageReference Include="Makaretu.Dns.Multicast" Version="0.25.0" />
     <PackageReference Include="Makaretu.KBucket" Version="0.5.0" />
     <PackageReference Include="Nito.AsyncEx" Version="5.0.0" />
@@ -62,7 +63,7 @@
     <PackageReference Include="Portable.BouncyCastle" Version="1.8.5" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19270-01" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.*" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="16.3.13" PrivateAssets="All" />
   </ItemGroup>
 
