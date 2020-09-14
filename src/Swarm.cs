@@ -557,7 +557,7 @@ namespace PeerTalk
             }
             catch (Exception)
             {
-                stream.DisposeAsync();
+                await stream.DisposeAsync();
                 throw;
             }
         }
